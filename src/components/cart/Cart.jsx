@@ -8,7 +8,7 @@ export const Cart = () => {
 	let { cartItems, totalItems, totalPrice } = useSelector((state) => state.cart);
 	console.log(JSON.parse(localStorage.getItem('state')));
 
-	console.log(cartItems);
+	console.log("cartItems",cartItems);
 
 	console.log(totalPrice);
 	const dispatch = useDispatch();
@@ -105,7 +105,9 @@ export const Cart = () => {
 								<Button
 									variant="primary"
 									style={{ marginTop: '20px' }}
-									onClick={() => navigate('/cart/checkout')}
+									onClick={() => {
+										clearCartHandler()
+										navigate('/cart/checkout')}}
 									disabled={cartItems.length === 0}
 								>
 									Proceed To Checkout
